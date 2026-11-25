@@ -12,6 +12,12 @@ import yachtNight from "@/assets/yacht-night.jpg";
 import officerIpad from "@/assets/officer-ipad.jpg";
 import watchScheduleLogo from "@/assets/watchschedule-logo-header-narrow.png";
 
+// The app is a separate deployment (app.watchschedule.com). Every call to
+// action on this page sends people there rather than to an on-page form.
+const APP = "https://app.watchschedule.com";
+const SIGN_UP = `${APP}/signup`;
+const SIGN_IN = `${APP}/login`;
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -110,10 +116,10 @@ function Header() {
           </nav>
           <div className="hidden md:flex items-center justify-end gap-3">
             <Button asChild variant="ghost" className="text-mute hover:bg-white/5 hover:text-bone h-9 font-normal">
-              <a href="#cta">Sign In</a>
+              <a href={SIGN_IN}>Sign In</a>
             </Button>
             <Button asChild className="bg-bronze text-ink hover:bg-bronze/90 h-9 rounded-none font-medium">
-              <a href="#cta">Request Access</a>
+              <a href={SIGN_UP}>Get Started</a>
             </Button>
           </div>
           <button onClick={() => setOpen(!open)} className="md:hidden col-start-2 p-2" aria-label="Menu">
@@ -128,8 +134,8 @@ function Header() {
               {item.label}
             </a>
           ))}
-          <a href="#cta" className="block mt-3 px-4 py-2.5 border border-line text-center text-mute hover:text-white">Sign In</a>
-          <a href="#cta" className="block mt-2 px-4 py-2.5 bg-bronze text-ink text-center font-medium hover:bg-bronze/90">Request Access</a>
+          <a href={SIGN_IN} className="block mt-3 px-4 py-2.5 border border-line text-center text-mute hover:text-white">Sign In</a>
+          <a href={SIGN_UP} className="block mt-2 px-4 py-2.5 bg-bronze text-ink text-center font-medium hover:bg-bronze/90">Get Started</a>
         </div>
       )}
     </header>
@@ -260,7 +266,7 @@ function Hero() {
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild className="bg-bronze text-ink hover:bg-bronze/90 h-11 px-6 rounded-none text-[14px] font-medium">
-                <a href="#cta">Request Access <Icon d={I.arrow} className="ml-1 h-4 w-4"/></a>
+                <a href={SIGN_UP}>Get Started <Icon d={I.arrow} className="ml-1 h-4 w-4"/></a>
               </Button>
               <Button asChild variant="outline" className="bg-transparent border-line text-white hover:bg-white/5 hover:text-white h-11 px-6 rounded-none text-[14px]">
                 <a href="#pricing">View Pricing</a>
@@ -791,7 +797,7 @@ function Pricing() {
                 ))}
               </ul>
               <div className="mt-8 pt-6 border-t border-line/40 flex-1 flex items-end">
-                <a href="#cta" className={`w-full text-center px-4 py-3 text-[14px] font-medium ${t.featured ? "bg-ink text-white hover:bg-ink-3" : "bg-white text-ink hover:bg-bone"} transition-colors`}>
+                <a href={SIGN_UP} className={`w-full text-center px-4 py-3 text-[14px] font-medium ${t.featured ? "bg-ink text-white hover:bg-ink-3" : "bg-white text-ink hover:bg-bone"} transition-colors`}>
                   {t.cta}
                 </a>
               </div>
@@ -876,8 +882,6 @@ function FAQ() {
 }
 
 function CTA() {
-  const [email, setEmail] = useState("");
-  const [sent, setSent] = useState(false);
   return (
     <section id="cta" className="bg-ink text-white relative overflow-hidden border-t border-line-2">
       <div className="absolute inset-0">
@@ -886,30 +890,22 @@ function CTA() {
         <div className="absolute inset-0 chart-grid opacity-40"/>
       </div>
       <div className="relative mx-auto max-w-4xl px-5 lg:px-8 py-24 lg:py-32 text-center">
-        <div className="eyebrow text-mute">Request Access</div>
+        <div className="eyebrow text-mute">Get Started</div>
         <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight">
           The dedicated watch scheduling platform for superyachts.
         </h2>
         <p className="mt-5 text-mute text-[16px] max-w-xl mx-auto leading-relaxed">
           Create fair, bridge-ready watch schedules in minutes, maintain rotation continuity, and spend less time managing watch schedules.
         </p>
-        <form
-          onSubmit={(e) => { e.preventDefault(); if (email) setSent(true); }}
-          className="mt-10 mx-auto max-w-md flex flex-col sm:flex-row gap-2"
-        >
-          <input
-            type="email"
-            required
-            placeholder="captain@vessel.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="flex-1 h-12 px-4 bg-ink-3 border border-line text-white placeholder:text-mute-2 focus:outline-none focus:border-white text-[14px]"
-          />
-          <button type="submit" className="h-12 px-6 bg-bronze text-ink font-medium text-[14px] hover:bg-bronze/90 transition-colors">
-            {sent ? "Request received" : "Request Access"}
-          </button>
-        </form>
-        <p className="mt-4 text-[11px] text-mute-2 font-mono uppercase tracking-widest">No spam · One launch update</p>
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          <a href={SIGN_UP} className="h-12 inline-flex items-center px-8 bg-bronze text-ink font-medium text-[14px] hover:bg-bronze/90 transition-colors">
+            Get Started
+          </a>
+          <a href={SIGN_IN} className="h-12 inline-flex items-center px-8 border border-line text-mute hover:text-white text-[14px] transition-colors">
+            Sign In
+          </a>
+        </div>
+        <p className="mt-4 text-[11px] text-mute-2 font-mono uppercase tracking-widest">Set up your vessel in minutes</p>
       </div>
     </section>
   );
