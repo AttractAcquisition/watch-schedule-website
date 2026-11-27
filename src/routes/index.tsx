@@ -531,17 +531,17 @@ function ImageBand() {
 function Modes() {
   const modes = [
     {
-      t: "Solo Watch", p: "€39", best: "Most 30m–50m yachts",
+      t: "Solo Watch", p: "€29", best: "Most 30m–50m yachts",
       d: "For yachts running a single port watchkeeper system.",
       f: ["Monthly schedule generation", "Leave management", "Fairness balancing", "Charter mode", "PDF exports"],
     },
     {
-      t: "Dual Watch", p: "€99", best: "Watchkeeper + OOW", featured: true,
+      t: "Dual Watch", p: "€39", best: "Watchkeeper + OOW", featured: true,
       d: "For yachts running two concurrent watch systems.",
       f: ["Includes everything in Solo", "Two concurrent watch schedules", "Advanced balancing"],
     },
     {
-      t: "Triple Watch", p: "€199", best: "65m+ yachts",
+      t: "Triple Watch", p: "€59", best: "65m+ yachts",
       d: "For larger yachts operating Deck, Interior, and Engineering watch systems.",
       f: ["Three departments", "Department-specific scheduling", "Leave rebalancing", "Coverage analytics"],
     },
@@ -743,19 +743,19 @@ function ImageBand2() {
 function Pricing() {
   const tiers = [
     {
-      t: "Solo Watch", p: "€39", annual: "€390", best: "Most 30m–50m yachts",
+      t: "Solo Watch", p: "€29", annual: "€313.20", best: "Most 30m–50m yachts",
       d: "For yachts with a single port watchkeeper.",
       f: ["Monthly schedule generation", "Leave management", "Fairness balancing", "Charter mode", "PDF exports"],
       cta: "Start Solo Watch",
     },
     {
-      t: "Dual Watch", p: "€99", annual: "€990", best: "Watchkeeper + OOW", featured: true,
+      t: "Dual Watch", p: "€39", annual: "€421.20", best: "Watchkeeper + OOW", featured: true,
       d: "For yachts running Watchkeeper + OOW.",
       f: ["Includes everything in Solo", "Two concurrent watch schedules", "Advanced balancing"],
       cta: "Start Dual Watch",
     },
     {
-      t: "Triple Watch", p: "€199", annual: "€1,990", best: "65m+ yachts",
+      t: "Triple Watch", p: "€59", annual: "€637.20", best: "65m+ yachts",
       d: "For yachts operating Deck, Interior, and Engineering watch systems.",
       f: ["Three departments", "Department-specific scheduling", "Leave rebalancing", "Coverage analytics"],
       cta: "Start Triple Watch",
@@ -785,7 +785,7 @@ function Pricing() {
                 <span className={`text-[13px] ${t.featured ? "text-mute-2" : "text-mute"}`}>/ month</span>
               </div>
               <div className={`mt-2 text-[12px] font-mono uppercase tracking-widest ${t.featured ? "text-mute-2" : "text-mute"}`}>
-                Annual: {t.annual} / year
+                Yearly: {t.annual} / year (10% off)
               </div>
               <p className={`mt-4 text-[14px] leading-relaxed ${t.featured ? "text-mute-2" : "text-mute"}`}>{t.d}</p>
               <ul className="mt-6 space-y-2.5 text-[14px]">
@@ -806,7 +806,7 @@ function Pricing() {
         </div>
 
         <p className="mt-10 text-center text-[13px] text-mute">
-          Annual plans include two months free. Pricing is based on the number of watch systems your vessel runs.
+          Pay yearly and save 10%. Pricing is based on the number of watch systems your vessel runs.
         </p>
       </div>
     </section>
